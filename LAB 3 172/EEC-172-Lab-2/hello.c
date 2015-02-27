@@ -33,7 +33,6 @@
 #define WHITE           0xFFFF
 #define RELOAD_VALUE    16000000 //16,000,000
 
-//The following are for determining cursor position during texting
 #define CHARSIZE 1
 #define CHARX 6
 #define CHARY 0
@@ -42,7 +41,6 @@
 #define DEFAULTX1 0
 #define DEFAULTY1 69
 
-//Variables for determining screen, paddle, and ball boundaries
 #define TOPEDGE 0
 #define BOTTOMEDGE 128
 #define LEFTEDGE 0
@@ -52,7 +50,6 @@
 #define RIGHTPADDLE 113
 #define PADDLELENGTH 40
 
-//Ints for initial ball, paddle, and slopes
 float p = 3.14159;
 int paddleTopL;
 int paddleTopR;
@@ -65,7 +62,6 @@ uint8_t ballY2;
 int dx = 3;
 int dy = 2;
 
-//IR Code receive variables
 volatile int edgeTimes[200]; 
 volatile int edgeI = 0;
 volatile unsigned char started = false;
@@ -88,7 +84,7 @@ int hisPaddleX = 113;
 int hisPaddleY = 44;
 
 
-void updateDraw(void) //For drawing locally created text characters
+void updateDraw(void)
 {
   drawX += CHARX;
   if(drawX > 118)
@@ -104,7 +100,7 @@ void updateDraw(void) //For drawing locally created text characters
   }
 }
 
-void updateDraw1(void) //For drawing remotely created text characters
+void updateDraw1(void)
 {
   drawX1 += CHARX;
   if(drawX1 > 118)
@@ -183,35 +179,33 @@ void updateBallP1 (void) {
 void UART1IntHandler(void) {
 	uint32_t ui32Status;
 
-    ui32Status = ROM_UARTIntStatus(UART1_BASE, true);
-    ROM_UARTIntClear(UART1_BASE, ui32Status);
-    while(ROM_UARTCharsAvail(UART1_BASE)) {
-      char input = ROM_UARTCharGet(UART1_BASE);
-      if(input == 'y')
-      {
-        drawLine(hisPaddleX, hisPaddleY, (hisPaddleX), (hisPaddleY + 40), BLACK);
-        hisPaddleY = ROM_UARTCharGet(UART1_BASE);
-        drawLine(hisPaddleX, hisPaddleY, (hisPaddleX), (hisPaddleY + 40), RED);
-        //updateBallP1();
-      }
-      //P2's UART1IntHandler
-      //currDat is the uint_32 read using ROM_UARTCharGet()
-      //If neither a 'u' or a 'd' have been received, then it must be an x-coordinate
-/*      else if (input != 'u' && input != 'd') {
-        //Erase old ball
-        fillCircle( ballX, ballY, RADIUS, BLACK);
-        
-        //Then update coords and draw new ball
-        ballX = input;
-        ballY = ROM_UARTCharGet(UART1_BASE); //y-coordinate always follows right after x-coordinate
-        fillCircle( ballX, ballY, RADIUS, WHITE);
-      }*/
+  ui32Status = ROM_UARTIntStatus(UART1_BASE, true);
+  ROM_UARTIntClear(UART1_BASE, ui32Status);
+  while(ROM_UARTCharsAvail(UART1_BASE)) 
+  {
+    char input = ROM_UARTCharGet(UART1_BASE);
+    if(input == 'y')
+    {
+      drawLine(hisPaddleX, hisPaddleY, (hisPaddleX), (hisPaddleY + 40), BLACK);
+      hisPaddleY = ROM_UARTCharGet(UART1_BASE);
+      drawLine(hisPaddleX, hisPaddleY, (hisPaddleX), (hisPaddleY + 40), RED);
+      //updateBallP1();
+    }
+    //If a 'c' has been received, then the next 2 numbers must be an x-coordinate and a y-coordinate
+    else if (input == 'c') 
+    {
+      //Erase old ball
+      fillCircle( ballX, ballY, RADIUS, BLACK);
       
-    		//setCursor etc
+      //Then update coords and draw new ball
+      ballX = ROM_UARTCharGet(UART1_BASE); //input;
+      ballY = ROM_UARTCharGet(UART1_BASE); //y-coordinate always follows right after x-coordinate
+      fillCircle( ballX, ballY, RADIUS, WHITE);
+    }     
   }
 }
 
-void ConfigureUART0(void) //Config local UART for Teraterm/Console use
+void ConfigureUART0(void)// Same as ConfigureUART()
 {
     ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA); //UART Pin A
     ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
@@ -225,7 +219,7 @@ void ConfigureUART0(void) //Config local UART for Teraterm/Console use
     UARTStdioConfig(0, 9600, 16000000);
 }
 
-void ConfigureUART1(void) //Configure UART for Tx/Rx functionality
+void ConfigureUART1(void)
 {
     ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB); //UART Pin B
     ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART1);
@@ -241,7 +235,7 @@ void ConfigureUART1(void) //Configure UART for Tx/Rx functionality
                              UART_CONFIG_PAR_NONE));
 }
 
-void ConfigureSSI (void) { //Configure SSI for OLED
+void ConfigureSSI (void) {
 	ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI0);
 	//ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA); //Already done in InitConsole()
 
@@ -579,9 +573,12 @@ void setup(void) {
   ROM_SysCtlDelay(SysCtlClockGet()/3); //delay(1000);
 }
 
+void loop() {
+}
+
 void SysTick_Handler(void)
 {
-  //Was unused in the 
+  //Will make later
 }
 
 
@@ -624,7 +621,7 @@ int main (void) {
   //setup();
   
   //Setup OLED
-  lcdTestPattern(); //RUN LCD TEST TO ENSURE SCREEN WORKS ON EACH BOOT
+  lcdTestPattern();
   ROM_SysCtlDelay(SysCtlClockGet()/6); //delay(500);
   initHW();
   setTextSize(1);
@@ -654,14 +651,14 @@ int main (void) {
   int ticks = 0;
   while(1)
 	{
-		ROM_SysCtlSleep();
-    if((ticks % 500000) == 0) //Ticks is used to determine when to update ball. Clock was not used as this fits better with the rest of the code
+		//ROM_SysCtlSleep();
+    /*if((ticks % 500000) == 0) 
     {
       updateBallP1();
       ticks = 0;
-    }
+    }*/
     ticks++;
-    if ((started == true) && (ROM_SysTickValueGet() < (RELOAD_VALUE - 2000000))) //If we get an IR remote interrupt
+    if ((started == true) && (ROM_SysTickValueGet() < (RELOAD_VALUE - 2000000))) 
     {
       GPIOIntDisable(GPIO_PORTB_BASE, GPIO_PIN_7); 
       timesPressed++;
@@ -726,9 +723,9 @@ int main (void) {
         if ((dValue >= 2 && dValue <= 9) || dValue == 0) { //If dValue is one of the acceptable numkeys (otherwise do nothing)
           //Record prevPress before updating currPress
           prevPress = currPress;
-          currPress = (char)(((int)'0')+dValue); //These values are used for Texting to set char sets, which have been removed from this code.
+          currPress = (char)(((int)'0')+dValue);
           
-          if(currPress == '6') //ME UP
+          if(currPress == '4') //ME UP
           {
             ROM_UARTCharPut(UART1_BASE, 'y'); //Send my move over XBee
             drawLine(myPaddleX, myPaddleY, (myPaddleX), (myPaddleY + 40), BLACK);
@@ -737,7 +734,7 @@ int main (void) {
             ROM_UARTCharPut(UART1_BASE, paddleY);
             drawLine(myPaddleX, myPaddleY, (myPaddleX), (myPaddleY + 40), BLUE);
           }
-          else if(currPress == '9') //ME DOWN
+          else if(currPress == '7') //ME DOWN
           {
             ROM_UARTCharPut(UART1_BASE, 'y'); //Send my move over XBee
             drawLine(myPaddleX, myPaddleY, (myPaddleX), (myPaddleY + 40), BLACK);

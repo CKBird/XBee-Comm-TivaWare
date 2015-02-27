@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\rvmdk\hello.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\rvmdk\hello.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Wed Feb 25 10:54:22 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Fri Feb 27 14:53:16 2015
 <BR><P>
 <H3>Maximum Stack Usage =        736 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -109,7 +109,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_round
 </UL>
-<BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_roundf
+<BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_roundf
 </UL>
 
 <P><STRONG><a name="[14]"></a>_double_round</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, depilogue.o(.text))
@@ -219,21 +219,21 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[3b]"></a>SSIBusy</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, ssi.o(i.SSIBusy))
-<BR><BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
+<BR><BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
 </UL>
 
 <P><STRONG><a name="[21]"></a>SSIDataPut</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, ssi.o(i.SSIDataPut))
 <BR><BR>[Calls]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataPut
 </UL>
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataPut
-<LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
-<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
+<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
+<LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
 </UL>
 
 <P><STRONG><a name="[18]"></a>SysCtlClockGet</STRONG> (Thumb, 250 bytes, Stack size 4 bytes, sysctl.o(i.SysCtlClockGet))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = SysCtlClockGet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 <LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigureSSI
 </UL>
@@ -241,10 +241,11 @@ Global Symbols
 <P><STRONG><a name="[4]"></a>SysTick_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, hello.o(i.SysTick_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
 </UL>
-<P><STRONG><a name="[6]"></a>UART1IntHandler</STRONG> (Thumb, 118 bytes, Stack size 24 bytes, hello.o(i.UART1IntHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = UART1IntHandler &rArr; drawLine &rArr; drawPixel &rArr; goTo &rArr; writeCommand
+<P><STRONG><a name="[6]"></a>UART1IntHandler</STRONG> (Thumb, 178 bytes, Stack size 24 bytes, hello.o(i.UART1IntHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = UART1IntHandler &rArr; fillCircle &rArr; fillCircleHelper &rArr; drawFastVLine &rArr; rawFastVLine &rArr; writeCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawLine
+<BR>[Calls]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fillCircle
+<LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawLine
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
 </UL>
@@ -259,29 +260,29 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigureUART0
 </UL>
 
-<P><STRONG><a name="[23]"></a>UARTprintf</STRONG> (Thumb, 18 bytes, Stack size 24 bytes, uartstdio.o(i.UARTprintf))
+<P><STRONG><a name="[24]"></a>UARTprintf</STRONG> (Thumb, 18 bytes, Stack size 24 bytes, uartstdio.o(i.UARTprintf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
 </UL>
-<BR>[Calls]<UL><LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTvprintf
+<BR>[Calls]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTvprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[24]"></a>UARTvprintf</STRONG> (Thumb, 420 bytes, Stack size 56 bytes, uartstdio.o(i.UARTvprintf))
+<P><STRONG><a name="[25]"></a>UARTvprintf</STRONG> (Thumb, 420 bytes, Stack size 56 bytes, uartstdio.o(i.UARTvprintf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = UARTvprintf &rArr; UARTwrite
 </UL>
-<BR>[Calls]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTwrite
+<BR>[Calls]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTwrite
 </UL>
-<BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTprintf
+<BR>[Called By]<UL><LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTprintf
 </UL>
 
-<P><STRONG><a name="[25]"></a>UARTwrite</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, uartstdio.o(i.UARTwrite))
+<P><STRONG><a name="[26]"></a>UARTwrite</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, uartstdio.o(i.UARTwrite))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = UARTwrite
 </UL>
-<BR>[Called By]<UL><LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTvprintf
+<BR>[Called By]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTvprintf
 </UL>
 
-<P><STRONG><a name="[26]"></a>__hardfp_roundf</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, roundf.o(i.__hardfp_roundf))
+<P><STRONG><a name="[27]"></a>__hardfp_roundf</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, roundf.o(i.__hardfp_roundf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __hardfp_roundf &rArr; _frnd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frnd
@@ -295,60 +296,61 @@ Global Symbols
 
 <P><STRONG><a name="[49]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[27]"></a>begin</STRONG> (Thumb, 356 bytes, Stack size 16 bytes, adafruit_gfx.o(i.begin))
+<P><STRONG><a name="[28]"></a>begin</STRONG> (Thumb, 356 bytes, Stack size 16 bytes, adafruit_gfx.o(i.begin))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = begin &rArr; writeCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
-<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
+<BR>[Calls]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
+<LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
 <LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[2a]"></a>drawFastVLine</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, adafruit_gfx.o(i.drawFastVLine))
+<P><STRONG><a name="[2b]"></a>drawFastVLine</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, adafruit_gfx.o(i.drawFastVLine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = drawFastVLine &rArr; rawFastVLine &rArr; writeCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFastVLine
-<LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFastHLine
+<BR>[Calls]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFastVLine
+<LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFastHLine
 </UL>
 <BR>[Called By]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fillCircleHelper
-<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fillCircle
+<LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fillCircle
 </UL>
 
 <P><STRONG><a name="[22]"></a>drawLine</STRONG> (Thumb, 162 bytes, Stack size 40 bytes, adafruit_gfx.o(i.drawLine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = drawLine &rArr; drawPixel &rArr; goTo &rArr; writeCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawPixel
+<BR>[Calls]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawPixel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART1IntHandler
 </UL>
 
-<P><STRONG><a name="[2d]"></a>drawPixel</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, adafruit_gfx.o(i.drawPixel))
+<P><STRONG><a name="[2e]"></a>drawPixel</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, adafruit_gfx.o(i.drawPixel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = drawPixel &rArr; goTo &rArr; writeCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
-<LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;goTo
+<BR>[Calls]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
+<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;goTo
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawLine
 </UL>
 
-<P><STRONG><a name="[2f]"></a>fillCircle</STRONG> (Thumb, 52 bytes, Stack size 32 bytes, adafruit_gfx.o(i.fillCircle))
+<P><STRONG><a name="[23]"></a>fillCircle</STRONG> (Thumb, 52 bytes, Stack size 32 bytes, adafruit_gfx.o(i.fillCircle))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = fillCircle &rArr; fillCircleHelper &rArr; drawFastVLine &rArr; rawFastVLine &rArr; writeCommand
 </UL>
 <BR>[Calls]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fillCircleHelper
-<LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawFastVLine
+<LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawFastVLine
 </UL>
 <BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateBallP1
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;resetPong
+<LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART1IntHandler
 </UL>
 
 <P><STRONG><a name="[30]"></a>fillCircleHelper</STRONG> (Thumb, 194 bytes, Stack size 56 bytes, adafruit_gfx.o(i.fillCircleHelper))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = fillCircleHelper &rArr; drawFastVLine &rArr; rawFastVLine &rArr; writeCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawFastVLine
+<BR>[Calls]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawFastVLine
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fillCircle
+<BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fillCircle
 </UL>
 
 <P><STRONG><a name="[31]"></a>fillRect</STRONG> (Thumb, 74 bytes, Stack size 24 bytes, adafruit_gfx.o(i.fillRect))
@@ -367,13 +369,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[2e]"></a>goTo</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, adafruit_gfx.o(i.goTo))
+<P><STRONG><a name="[2f]"></a>goTo</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, adafruit_gfx.o(i.goTo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = goTo &rArr; writeCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
-<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
+<BR>[Calls]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
+<LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawPixel
+<BR>[Called By]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawPixel
 <LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcdTestPattern
 </UL>
 
@@ -384,24 +386,24 @@ Global Symbols
 <P><STRONG><a name="[34]"></a>lcdTestPattern</STRONG> (Thumb, 114 bytes, Stack size 16 bytes, hello.o(i.lcdTestPattern))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = lcdTestPattern &rArr; goTo &rArr; writeCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
-<LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;goTo
+<BR>[Calls]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
+<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;goTo
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[7]"></a>main</STRONG> (Thumb, 752 bytes, Stack size 568 bytes, hello.o(i.main))
+<P><STRONG><a name="[7]"></a>main</STRONG> (Thumb, 724 bytes, Stack size 568 bytes, hello.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 736<LI>Call Chain = main &rArr; updateBallP1 &rArr; resetPong &rArr; fillCircle &rArr; fillCircleHelper &rArr; drawFastVLine &rArr; rawFastVLine &rArr; writeCommand
 </UL>
 <BR>[Calls]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTextSize
 <LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initHW
 <LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fillScreen
 <LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawLine
-<LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 <LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
-<LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTprintf
+<LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTprintf
 <LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntEnable
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntDisable
@@ -410,33 +412,33 @@ Global Symbols
 <LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigureUART1
 <LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigureUART0
 <LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigureSSI
-<LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_roundf
+<LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_roundf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[2b]"></a>rawFastHLine</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, adafruit_gfx.o(i.rawFastHLine))
+<P><STRONG><a name="[2c]"></a>rawFastHLine</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, adafruit_gfx.o(i.rawFastHLine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = rawFastHLine &rArr; writeCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
-<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
+<BR>[Calls]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
+<LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawFastVLine
+<BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawFastVLine
 </UL>
 
-<P><STRONG><a name="[2c]"></a>rawFastVLine</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, adafruit_gfx.o(i.rawFastVLine))
+<P><STRONG><a name="[2d]"></a>rawFastVLine</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, adafruit_gfx.o(i.rawFastVLine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = rawFastVLine &rArr; writeCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
-<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
+<BR>[Calls]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
+<LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawFastVLine
+<BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawFastVLine
 </UL>
 
 <P><STRONG><a name="[32]"></a>rawFillRect</STRONG> (Thumb, 134 bytes, Stack size 24 bytes, adafruit_gfx.o(i.rawFillRect))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = rawFillRect &rArr; writeCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
-<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
+<BR>[Calls]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeCommand
+<LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fillRect
 </UL>
@@ -444,7 +446,7 @@ Global Symbols
 <P><STRONG><a name="[3a]"></a>resetPong</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, hello.o(i.resetPong))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = resetPong &rArr; fillCircle &rArr; fillCircleHelper &rArr; drawFastVLine &rArr; rawFastVLine &rArr; writeCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fillCircle
+<BR>[Calls]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fillCircle
 </UL>
 <BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateBallP1
 </UL>
@@ -456,36 +458,36 @@ Global Symbols
 <P><STRONG><a name="[38]"></a>updateBallP1</STRONG> (Thumb, 196 bytes, Stack size 16 bytes, hello.o(i.updateBallP1))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = updateBallP1 &rArr; resetPong &rArr; fillCircle &rArr; fillCircleHelper &rArr; drawFastVLine &rArr; rawFastVLine &rArr; writeCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fillCircle
+<BR>[Calls]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fillCircle
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;resetPong
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[28]"></a>writeCommand</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, adafruit_gfx.o(i.writeCommand))
+<P><STRONG><a name="[29]"></a>writeCommand</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, adafruit_gfx.o(i.writeCommand))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = writeCommand
 </UL>
 <BR>[Calls]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataPut
 <LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIBusy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFillRect
-<LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFastVLine
-<LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFastHLine
-<LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;goTo
-<LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFastVLine
+<LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFastHLine
+<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;goTo
+<LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 </UL>
 
-<P><STRONG><a name="[29]"></a>writeData</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, adafruit_gfx.o(i.writeData))
+<P><STRONG><a name="[2a]"></a>writeData</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, adafruit_gfx.o(i.writeData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = writeData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataPut
 </UL>
 <BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFillRect
-<LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFastVLine
-<LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFastHLine
-<LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;goTo
-<LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawPixel
-<LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFastVLine
+<LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawFastHLine
+<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;goTo
+<LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawPixel
+<LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 <LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcdTestPattern
 </UL>
 <P>

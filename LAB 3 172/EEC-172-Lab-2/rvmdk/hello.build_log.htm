@@ -21,44 +21,44 @@ Target DLL:      lmidk-agdi.dll V???
 Dialog DLL:      TCM.DLL V1.14.4.0
  
 <h2>Project:</h2>
-C:\Users\Chris\Desktop\LAB 3 172\EEC-172-Lab-2\hello.uvproj
+C:\Users\Chris\Desktop\XBee-Comm-TivaWare\LAB 3 172\EEC-172-Lab-2\hello.uvproj
 Project File Date:  02/06/2015
 
 <h2>Output:</h2>
 Rebuild target 'hello'
 compiling hello.c...
-hello.c(466): warning:  #69-D: integer conversion resulted in truncation
+hello.c(464): warning:  #69-D: integer conversion resulted in truncation
           writeData(RED>>8); writeData(RED);
+hello.c(467): warning:  #69-D: integer conversion resulted in truncation
+          writeData(YELLOW>>8);writeData(YELLOW);
 hello.c(469): warning:  #69-D: integer conversion resulted in truncation
-          writeData(YELLOW>>8);writeData(YELLOW);
-hello.c(471): warning:  #69-D: integer conversion resulted in truncation
         else if(i<48){writeData(GREEN>>8);writeData(GREEN);}
+hello.c(470): warning:  #69-D: integer conversion resulted in truncation
+        else if(i<64){writeData(CYAN>>8);writeData(CYAN);}
 hello.c(472): warning:  #69-D: integer conversion resulted in truncation
-        else if(i<64){writeData(CYAN>>8);writeData(CYAN);}
-hello.c(474): warning:  #69-D: integer conversion resulted in truncation
         else if(i<96){writeData(MAGENTA>>8);writeData(MAGENTA);}
-hello.c(478): warning:  #69-D: integer conversion resulted in truncation
+hello.c(476): warning:  #69-D: integer conversion resulted in truncation
           writeData(WHITE);
-hello.c(494): warning:  #69-D: integer conversion resulted in truncation
+hello.c(492): warning:  #69-D: integer conversion resulted in truncation
           writeData(RED>>8); writeData(RED);
-hello.c(497): warning:  #69-D: integer conversion resulted in truncation
+hello.c(495): warning:  #69-D: integer conversion resulted in truncation
           writeData(YELLOW>>8);writeData(YELLOW);
-hello.c(499): warning:  #69-D: integer conversion resulted in truncation
+hello.c(497): warning:  #69-D: integer conversion resulted in truncation
         else if(i<48){writeData(GREEN>>8);writeData(GREEN);}
-hello.c(500): warning:  #69-D: integer conversion resulted in truncation
+hello.c(498): warning:  #69-D: integer conversion resulted in truncation
         else if(i<64){writeData(CYAN>>8);writeData(CYAN);}
-hello.c(502): warning:  #69-D: integer conversion resulted in truncation
+hello.c(500): warning:  #69-D: integer conversion resulted in truncation
         else if(i<96){writeData(MAGENTA>>8);writeData(MAGENTA);}
-hello.c(506): warning:  #69-D: integer conversion resulted in truncation
+hello.c(504): warning:  #69-D: integer conversion resulted in truncation
           writeData(WHITE);
-hello.c(648): warning:  #550-D: variable "prevPress" was set but never used
+hello.c(646): warning:  #550-D: variable "prevPress" was set but never used
     char prevPress;
 hello.c: 13 warnings, 0 errors
 assembling startup_rvmdk.S...
 compiling uartstdio.c...
 compiling Adafruit_GFX.c...
 linking...
-Program Size: Code=6200 RO-data=500 RW-data=88 ZI-data=1312  
+Program Size: Code=6228 RO-data=500 RW-data=88 ZI-data=1312  
 After Build - User command #1: fromelf --bin --output .\rvmdk\hello.bin .\rvmdk\hello.axf
 ".\rvmdk\hello.axf" - 0 Error(s), 13 Warning(s).
 </pre>
